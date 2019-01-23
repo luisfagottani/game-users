@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-type';
 import Form from './Form';
 import UsersList from './UsersList';
 import Button from './Button'
@@ -56,7 +55,7 @@ class GameUserContainer extends Component {
     return (
       <div>
       <Form handleSaveUser={this.handleSaveUser} errorMsg={errorMsg} />
-      {!this.dontExistUsers() && (<Button userAction={this.showUserGames} text={"Show User Games"} />)}
+      {!this.dontExistUsers() && (<Button userAction={this.showUserGames} text={showGames ? "Hide User Games" : "Show User Games"} />)}
       <UsersList userList={dataUsers} showGames={showGames} />
       </div>
     )

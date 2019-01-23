@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-type';
+import PropTypes from 'prop-types';
 
 class User extends Component {
   showNumberGames = () => {
@@ -20,5 +20,13 @@ class User extends Component {
     );
   }
 }
+
+User.propTypes = {
+  userName: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  showNumberOfGames: PropTypes.bool.isRequired,
+  numberOfGamesPlayed: PropTypes.number.isRequired
+};
 
 export default User;

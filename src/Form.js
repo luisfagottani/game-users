@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-type';
+import PropTypes from 'prop-types';
 import Button from './Button'
 
 class Form extends React.Component {
@@ -50,6 +50,10 @@ class Form extends React.Component {
     );
   }
 }
+
+Form.propTypes = {
+  errorMsg: PropTypes.string,
+};
 
 
 export default Form;
