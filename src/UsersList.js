@@ -1,15 +1,23 @@
-import React, {Component} from 'React';
-import PropTypes from 'prop-type';
-
-class UserList extends Component {
+import React, {Component} from 'react';
+import User from './User'
+class UsersList extends Component {
 
   render() {
+    const {userList, showGames} = this.props;
     return (
       <ul>
-        <li></li>
+        {Object.values(userList).map(user  => (
+          <User 
+          key={user['userName']} 
+          showNumberOfGames={showGames} 
+          userName={user['userName']} 
+          lastName={user['lastName']} 
+          firstName={user['firstName']} 
+          numberOfGamesPlayed={user['gamesPlayed']}/>
+        ))}
       </ul>
     );
   }
 }
 
-export default UserList;
+export default UsersList;

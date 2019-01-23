@@ -12,9 +12,6 @@ The instructions for this project are located in the `instructions.md` file.
 */
 
 class App extends Component {
-  teste = () => {
-    return true;
-  }
   render() {
     return (
       <div className="App">
@@ -22,7 +19,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
-        <GameUserContainer handleSaveUser={this.teste} />
+        <GameUserContainer />
       </div>
     );
   }

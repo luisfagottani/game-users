@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-type';
 
 const Button = (props) => {
     return (

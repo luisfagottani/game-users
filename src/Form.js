@@ -2,21 +2,54 @@ import React from 'react';
 import PropTypes from 'prop-type';
 import Button from './Button'
 
-const Form = (props) => {
-  const {userName, lastName, firstName, handleSaveUser, handleUserName, handleFirstName, handleLastName } = props;
+class Form extends React.Component {
+  state = {
+    userName: '',
+    firstName: '',
+    lastName: '',
+    gamesPlayed: 0
+  };
+
+  handleUserName = event => {
+    this.setState({ userName: event.target.value  });
+  };
+
+  handleFirstName = event => {
+    this.setState({ firstName: event.target.value  });
+  };
+
+  handleLastName = event => {
+    this.setState({lastName: event.target.value });
+  };
+
+  isDisabled = () => {
+    const {userName, firstName, lastName} = this.state;
+    if(userName.length > 0 && firstName.length > 0 && lastName.length > 0){
+      return false
+    }
+    return true
+  }
+
+  submitForm = (event) => {
+    this.props.handleSaveUser(event, this.state)
+  }
+
+  render(){
+    const {errorMsg } = this.props;
+    const {userName, firstName, lastName} = this.state;
     return (
-      <form action={handleSaveUser}>
-        <input type="text" name="userName" onChange={handleUserName} value={userName} placeholder="Username" />
-        <input type="text" name="firstName" onChange={handleFirstName} value={firstName} placeholder="First name" />
-        <input type="text" name="userName" onChange={handleLastName} value={lastName} placeholder="Last name" />
-        <Button text={"Cadastrar Gamer"} />
+      <form onSubmit={this.submitForm}>
+        <input type="text" name="userName" onChange={this.handleUserName} value={userName} placeholder="Username" />
+        <input type="text" name="firstName" onChange={this.handleFirstName} value={firstName} placeholder="First name" />
+        <input type="text" name="lastName" onChange={this.handleLastName} value={lastName} placeholder="Last name" />
+        <Button text={"Cadastrar Gamer"} isDisabled={this.isDisabled()} />
+        {errorMsg && (
+          <p className="error">{errorMsg}</p>
+        )}
       </form>
     );
+  }
 }
-
-// Form.PropTypes = {
-//   handleSaveUser: PropTypes.func.isRequired
-// }
 
 
 export default Form;
